@@ -1,0 +1,3 @@
+# For making jejumonthang
+
+studying...
