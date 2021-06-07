@@ -1,3 +1,3 @@
-# For making jejumonthang
+# For making jejumonthang🍊
 
-studying...
+Making jejumonthang🍊 with python3, Django, stylecss...🐍
