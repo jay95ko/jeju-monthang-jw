@@ -4,7 +4,7 @@ from core.models import TimeStampedModel
 
 class Photo(TimeStampedModel):
     caption = models.CharField(max_length=50)
-    file = models.ImageField(upload_to="room_photos")
+    file = models.ImageField(upload_to="guesthouse_photos")
     guesthouse = models.ForeignKey(
         "GuestHouse", related_name="room_photos", on_delete=models.CASCADE
     )
@@ -27,7 +27,7 @@ class Signature(TimeStampedModel):
 
     name = models.CharField(max_length=100)
     description = models.TextField()
-    photo = models.ImageField(blank=True, null=True)
+    photo = models.ImageField(blank=True, null=True, upload_to="signature_photo")
     price = models.IntegerField(default=0)
     start_at = models.TimeField(null=True)
     signature_type = models.ManyToManyField(

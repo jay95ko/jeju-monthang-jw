@@ -45,6 +45,8 @@ DJANGO_APP = [
     "django.contrib.staticfiles",
 ]
 
+THIRD_PARTY_APPS = ["django_seed"]
+
 INSTALLED_APPS = DJANGO_APP + USER_APP
 
 MIDDLEWARE = [
@@ -128,3 +130,7 @@ USE_TZ = True
 STATIC_URL = "/static/"
 
 AUTH_USER_MODEL = "users.User"
+
+MEDIA_ROOT = os.path.join(BASE_DIR, "uploads")
+
+MEDIA_URL = "/media/"

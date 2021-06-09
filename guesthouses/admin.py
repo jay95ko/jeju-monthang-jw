@@ -13,9 +13,16 @@ class SignatureAdmin(admin.ModelAdmin):
     )
     list_filter = ("signature_type",)
 
+    search_fields = ("signature_type",)
+
 
 @admin.register(models.SignatureType)
 class SignatureTypeAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(models.Photo)
+class PhotoAdmin(admin.ModelAdmin):
     pass
 
 
@@ -25,6 +32,7 @@ class GuestHouseAdmin(admin.ModelAdmin):
         "name",
         "price",
         "address",
+        "host",
         "check_in",
         "check_out",
     )

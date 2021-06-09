@@ -20,6 +20,8 @@ class CustomUserAdmin(admin.ModelAdmin):
         "host",
     )
 
+    search_fields = ("username",)
+
     fieldsets = UserAdmin.fieldsets + (
         (
             "Custom Profile",
