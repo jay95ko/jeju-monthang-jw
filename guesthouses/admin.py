@@ -8,6 +8,7 @@ from . import models
 class SignatureAdmin(admin.ModelAdmin):
     list_display = (
         "name",
+        "signature_type",
         "price",
         "start_at",
     )

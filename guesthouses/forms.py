@@ -5,4 +5,4 @@ class Searchform(forms.Form):
 
     city = forms.CharField(initial="제주시")
     price = forms.IntegerField(required=False)
-    signature = forms.ModelMultipleChoiceField(required=False, queryset=models.Signature.objects.all(), widget=forms.CheckboxSelectMultiple)
+    signatureType = forms.ModelMultipleChoiceField(required=False, queryset=models.SignatureType.objects.all(), widget=forms.CheckboxSelectMultiple)

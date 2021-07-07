@@ -30,14 +30,16 @@ class Signature(TimeStampedModel):
     photo = models.ImageField(blank=True, null=True, upload_to="signature_photo")
     price = models.IntegerField(default=0)
     start_at = models.TimeField(null=True)
-    signature_type = models.ManyToManyField(
+    signature_type = models.ForeignKey(
         "SignatureType",
         related_name="Signature",
         blank=True,
+        on_delete=models.CASCADE
     )
 
     def __str__(self):
-        return self.name
+        name= f"{self.signature_type} - {self.name}"
+        return name
 
 
 class GuestHouse(TimeStampedModel):
@@ -87,9 +89,11 @@ class GuestHouse(TimeStampedModel):
         "Signature", related_name="GuestHouse", blank=True
     )
 
+
     host = models.ForeignKey(
         "users.User", related_name="guesthouse", on_delete=models.CASCADE
     )
+
 
     class Meta:
         verbose_name = "Guest House"

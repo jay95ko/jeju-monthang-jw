@@ -16,6 +16,11 @@
     <ul>
     {% for guesthouse in guesthouses %}
         <li>{{guesthouse.name}}</li>
+        
+        {% for signature in guesthouse.signature.all %}
+        <h6>{{signature}}</h6>
+        {% endfor %}
+            
     {% endfor %}
 </ul>
 

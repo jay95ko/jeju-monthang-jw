@@ -1,6 +1,7 @@
 from django.views.generic import ListView, DetailView, View
 from django.shortcuts import render
 from django.core.paginator import Paginator
+from django.db.models import Q, query
 from .models import GuestHouse
 from . import forms
 
@@ -35,7 +36,6 @@ class Search(View):
     def get(self, request):
 
         city = request.GET.get("city")
-        print(city)
 
         if city:
 
@@ -44,8 +44,15 @@ class Search(View):
             if form.is_valid():
                 city = form.cleaned_data.get("city")
                 price = form.cleaned_data.get("price")
-                signatures = form.cleaned_data.get("signature")
+                signatureTypes = form.cleaned_data.get("signatureType")
+                signature_get=[]
+                for signatureType in signatureTypes:
+                    signatures = signatureType.Signature.all()
+                    for signature in signatures:
+                        signature_get.append(signature.pk)
 
+                
+                
                 filter_args={}
 
                 filter_args["city__startswith"] = city
@@ -53,16 +60,15 @@ class Search(View):
                 if price is not None:
                     filter_args["price__lte"] = price
 
-                print(filter_args)
-
                 guesthouses = GuestHouse.objects.filter(**filter_args).order_by("-created")
 
-                print(guesthouses)
+                if len(signature_get)>0:
+                    query = Q(signature__pk=signature_get[0])
+                    for signature in signature_get[1:]:
+                        query |= Q(signature__pk=signature)
 
-                for signature in signatures:
-                    guesthouses = guesthouses.filter(signature=signature)
-
-                print(guesthouses)
+                    guesthouses = guesthouses.filter(query).distinct()
+                    
 
                 return render(request, "guesthouses/search.html", {"form": form, "guesthouses": guesthouses})
         

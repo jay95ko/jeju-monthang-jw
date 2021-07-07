@@ -28,13 +28,10 @@ class Command(BaseCommand):
             {
                 "name": lambda x: seeder.faker.name(),
                 "price": lambda x: random.randint(10000, 50000),
+                "signature_type": lambda x: random.choice(Signature_Type),
             },
         )
         create_something = seeder.execute()
-        create_clean = flatten(list(create_something.values()))
-        for pk in create_clean:
-            signature = Signature.objects.get(pk=pk)
-            a = random.choice(Signature_Type)
-            signature.signature_type.add(a)
+        
 
         self.stdout.write(self.style.SUCCESS(f"{number} Signature created!"))
