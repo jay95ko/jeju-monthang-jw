@@ -30,6 +30,7 @@ class PhotoAdmin(admin.ModelAdmin):
 class GuestHouseAdmin(admin.ModelAdmin):
     list_display = (
         "name",
+        "city",
         "price",
         "address",
         "host",
@@ -38,5 +39,6 @@ class GuestHouseAdmin(admin.ModelAdmin):
     )
     list_filter = (
         "signature",
+        "city",
         "price",
     )

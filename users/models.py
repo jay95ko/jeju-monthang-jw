@@ -15,7 +15,7 @@ class User(AbstractUser):
     )
 
     gender = models.CharField(choices=GENDER_CHOICE, max_length=10)
-    age = models.PositiveIntegerField()
+    age = models.PositiveIntegerField(null=True)
     avatar = models.ImageField(blank=True, upload_to="avatars")
     birthdate = models.DateField(null=True)
     host = models.BooleanField(default=False)

@@ -43,10 +43,43 @@ class Signature(TimeStampedModel):
 class GuestHouse(TimeStampedModel):
 
     """GuestHouse"""
+    
+    jeju="제주시"
+    jochen="조천읍"
+    gujwa="구좌읍"
+    udo="우도"
+    seongsan="성산읍"
+    pyoseon="포선면"
+    namwon="남원읍"
+    seogwipo="서귀포시"
+    jungmun="중문"
+    andeok="안덕면"
+    daejeong="대정읍"
+    hankyung="한경읍"
+    hanlim="한림읍"
+    aewol="애월읍"
+
+    CITY_CHOICE=(
+    (jeju, "제주시"),
+    (jochen, "조천읍"),
+    (gujwa, "구좌읍"),
+    (udo, "우도"),
+    (seongsan, "성산읍"),
+    (pyoseon, "포선면"),
+    (namwon, "남원읍"),
+    (seogwipo, "서귀포시"),
+    (jungmun, "중문"),
+    (andeok, "안덕면"),
+    (daejeong, "대정읍"),
+    (hankyung, "한경면"),
+    (hanlim, "한림읍"),
+    (aewol, "애월읍"),
+    )
 
     name = models.CharField(max_length=100)
     description = models.TextField()
     price = models.IntegerField()
+    city = models.CharField(choices=CITY_CHOICE, max_length=80)
     address = models.CharField(max_length=200)
     check_in = models.TimeField()
     check_out = models.TimeField()

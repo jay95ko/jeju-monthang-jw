@@ -1,0 +1,23 @@
+{%extends "base.html"%} 
+{% block page_title %}Detail{% endblock page_title %}
+
+
+{%block content%}
+    <h1>{{guesthouse.name}}</h1>
+
+    <h3>Host : {{guesthouse.host.username}}</h3>
+    <h3>Price : {{guesthouse.price}}₩</h3>
+    <h3>Address : {{guesthouse.address}}</h3>
+    <h3>Signature : </h3>
+    <ul>
+    {% for s in guesthouse.signature.all %}
+    
+        <li>
+        {{s}}</li>
+        {% endfor %}
+    </ul>
+
+    
+
+
+{%endblock%}
