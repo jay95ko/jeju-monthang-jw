@@ -2,6 +2,13 @@
     <a href="{%url "core:home"%}">🍊JejuMonthang🍊</a>
     <ul>
         <li>
-            <a href="#">Login</a>
+            
+            {% if user.is_authenticated %}
+                <a href="{% url "users:logout"%}">LogOut</a>
+            {% else %}
+                <a href="{% url "users:login"%}">LogIn</a>
+            {% endif %}
+                
+            
         </li>
     </ul>
