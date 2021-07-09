@@ -12,12 +12,16 @@ class CustomUserAdmin(admin.ModelAdmin):
         "gender",
         "age",
         "host",
+        "email_verified",
+        "email_secret",
+        "login_method",
     )
 
     list_filter = (
         "gender",
         "age",
         "host",
+        
     )
 
     search_fields = ("username",)
@@ -32,6 +36,7 @@ class CustomUserAdmin(admin.ModelAdmin):
                     "avatar",
                     "birthdate",
                     "host",
+                    "login_method",
                 )
             },
         ),

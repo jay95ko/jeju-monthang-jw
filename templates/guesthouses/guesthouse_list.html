@@ -4,11 +4,11 @@
 
 {%block content%}
 {%for guesthouse in guesthouses%}
-    <h1>
+    <h3>
         <a href="{%url "guesthouses:detail" guesthouse.pk %}">
-        {{guesthouse.name}} - {%for signature in guesthouse.signature.all%} 
-    </a>{%endfor%}
-    </h1>
+        {{guesthouse.name}}
+    </a>
+    </h3>
 {%endfor%}
     <h5>
         {% if page_obj.has_previous %}
